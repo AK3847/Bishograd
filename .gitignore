@@ -6,5 +6,8 @@ dist/
 wheels/
 *.egg-info
 
+
+## folders
+tests/
 # venv
 .venv
