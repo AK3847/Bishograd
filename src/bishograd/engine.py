@@ -49,6 +49,17 @@ class Hako:
         out._backward = _backward
         return out
 
+    def exp(self):
+        x = self.data
+        out = Hako(math.exp(x), (self,), "exp")
+
+        def _backward():
+            self.grad += out.data * out.grad
+
+        out._backward = _backward
+
+        return out
+
     def backward(self):
         topo = []
         vis = set()
