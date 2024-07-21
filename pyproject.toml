@@ -17,6 +17,7 @@ build-backend = "hatchling.build"
 managed = true
 dev-dependencies = [
     "pre-commit==2.9.2",
+    "ipykernel>=6.29.5",
 ]
 
 [tool.hatch.metadata]
