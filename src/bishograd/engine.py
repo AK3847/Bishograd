@@ -57,6 +57,9 @@ class Hako:
     def __sub__(self, other):
         return self + (-other)
 
+    def __radd__(self, other):
+        return self + other
+
     def tanh(self):
         x = self.data
         tanh_value = (math.exp(2 * x) - 1) / (math.exp(2 * x) + 1)
