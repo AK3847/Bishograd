@@ -40,3 +40,7 @@ class MLP:
 
     def parameters(self):
         return [p for layer in self.layers for p in layer.parameters()]
+
+    def zero_grad(self):
+        for param in self.parameters():
+            param.grad = 0.0
