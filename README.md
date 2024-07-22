@@ -8,6 +8,9 @@ A  Bishõ Autograd engine in python along with a lightweight deep neural-network
 ## what's Hako?
 箱 - Hako is Japanese word for 'box' , here Hako signify the neurons in our network ;D
 
+## Example
+Wonder how this works? Checkout the [example.ipynb](example.ipynb) where I implemented the XOR logic gate with neural network!
+
 ## Functionalities to be added : 
 - [x] ReLU Activation function
 - [ ] Add MLP.training() to automate the whole training code
