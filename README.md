@@ -9,7 +9,7 @@ A  Bishõ Autograd engine in python along with a lightweight deep neural-network
 箱 - Hako is Japanese word for 'box' , here Hako signify the neurons in our network ;D
 
 ## Functionalities to be added : 
-- [ ] ReLU Activation function
+- [x] ReLU Activation function
 - [ ] Add MLP.training() to automate the whole training code
 - [ ] Add Sigmoid, LeakyReLU & other activation functions
 - [ ] Add loss functions - categorical loss, mean-square loss etc 
