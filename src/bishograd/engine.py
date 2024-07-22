@@ -51,6 +51,9 @@ class Hako:
     def __truediv__(self, other):
         return self * other ** (-1)
 
+    def __rtruediv__(self, other):
+        return other * self ** (-1)
+
     def __neg__(self):
         return self * -1
 
@@ -67,6 +70,15 @@ class Hako:
 
         def _backward():
             self.grad += (1 - tanh_value**2) * out.grad
+
+        out._backward = _backward
+        return out
+
+    def relu(self):
+        out = Hako(0 if self.data < 0 else self.data, (self,), "ReLU")
+
+        def _backward():
+            self.grad += out.grad if out.data > 0 else 0
 
         out._backward = _backward
         return out
