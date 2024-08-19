@@ -54,3 +54,16 @@ class MLP:
     def zero_grad(self):
         for param in self.parameters():
             param.grad = 0.0
+
+    def train(self, epochs=50, lr_rate=0.001, x_input=None, y_output=None):
+        if x_input is None or y_output is None:
+            raise ValueError("Invalid input for training data")
+        for epoch in range(epochs + 1):
+            y_pred = [self(x) for x in x_input]
+            loss = sum((y1 - y2) ** 2 for y1, y2 in zip(y_pred, y_output))
+            self.zero_grad()
+            loss.backward()
+            for param in self.parameters():
+                param.grad = max(min(param.grad, 1), -1)
+                param.data -= lr_rate * param.grad
+            print(f"epoch: {epoch}/{epochs} ---- Loss: {loss.data:.4f}")
