@@ -3,13 +3,19 @@ from src.bishograd.engine import Hako
 
 
 class Neuron:
-    def __init__(self, nin):
+    def __init__(self, nin, activation="relu"):
         self.w = [Hako(random.uniform(-1, 1)) for _ in range(nin)]
         self.b = Hako(random.uniform(-1, 1))
+        self.activation = activation
 
     def __call__(self, x):
         act = sum(wi * xi for wi, xi in zip(self.w, x)) + self.b
-        out = act.tanh()
+        if self.activation == "relu":
+            out = act.relu()
+        elif self.activation == "sigmoid":
+            out = act.sigmoid()
+        elif self.activation == "tanh":
+            out = act.tanh()
         return out
 
     def parameters(self):
