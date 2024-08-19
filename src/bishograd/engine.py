@@ -1,5 +1,4 @@
 import math
-from typing import Self
 
 
 class Hako:
@@ -11,9 +10,9 @@ class Hako:
         self._backward = lambda: None
 
     def __repr__(self) -> str:
-        return f"Hako(data : {self.data})"
+        return f"Hako(data : {self.data:.2f})"
 
-    def __add__(self, other) -> Self:
+    def __add__(self, other):
         other = other if isinstance(other, Hako) else Hako(other)
         out = Hako(self.data + other.data, (self, other), "+")
 
@@ -24,7 +23,7 @@ class Hako:
         out._backward = _backward
         return out
 
-    def __mul__(self, other) -> Self:
+    def __mul__(self, other):
         other = other if isinstance(other, Hako) else Hako(other)
         out = Hako(self.data * other.data, (self, other), "*")
 
@@ -79,6 +78,15 @@ class Hako:
 
         def _backward():
             self.grad += out.grad if out.data > 0 else 0
+
+        out._backward = _backward
+        return out
+
+    def sigmoid(self):
+        out = Hako(1 / (1 + math.exp(-self.data)), (self,), "Sig")
+
+        def _backward():
+            self.grad += out.data(1 - out.data) * out.grad
 
         out._backward = _backward
         return out
