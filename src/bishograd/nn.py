@@ -60,8 +60,13 @@ class MLP:
         for param in self.parameters():
             param.grad = 0.0
 
-    def train(self, epochs=50, lr_rate=0.001, x_input=None, y_output=None):
-        print(f"Training {self}")
+    def train(self, epochs=50, lr_rate=0.001, x_input=None, y_output=None, stats=True):
+        if stats:
+            print(f"{'-'*8}Training Model{'-'*8}")
+            print(
+                f"Parameters = {len(self.parameters())}\nEpochs = {epochs}\nLearning Rate: {lr_rate}"
+            )
+            print(f"{'-'*30}")
         if x_input is None or y_output is None:
             raise ValueError("Invalid input for training data")
         for epoch in range(epochs + 1):
