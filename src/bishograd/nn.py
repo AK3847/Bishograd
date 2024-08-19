@@ -4,8 +4,8 @@ from src.bishograd.engine import Hako
 
 class Neuron:
     def __init__(self, nin, activation="relu"):
-        self.w = [Hako(random.uniform(-1, 1)) for _ in range(nin)]
-        self.b = Hako(random.uniform(-1, 1))
+        self.w = [Hako(random.uniform(-0.5, 0.5)) for _ in range(nin)]
+        self.b = Hako(random.uniform(-0.5, 0.5))
         self.activation = activation
 
     def __call__(self, x):
