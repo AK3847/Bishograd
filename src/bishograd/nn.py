@@ -16,6 +16,10 @@ class Neuron:
             out = act.sigmoid()
         elif self.activation == "tanh":
             out = act.tanh()
+        elif self.activation == "linear":
+            out = act.linear()
+        else:
+            raise ValueError(f"Unsupported activation function: {self.activation}")
         return out
 
     def parameters(self):
@@ -23,8 +27,8 @@ class Neuron:
 
 
 class Layer:
-    def __init__(self, nin, nout) -> None:
-        self.neurons = [Neuron(nin) for _ in range(nout)]
+    def __init__(self, nin, nout, activation="relu") -> None:
+        self.neurons = [Neuron(nin, activation) for _ in range(nout)]
 
     def __call__(self, x):
         out = [n(x) for n in self.neurons]
