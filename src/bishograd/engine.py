@@ -86,7 +86,7 @@ class Hako:
         out = Hako(1 / (1 + math.exp(-self.data)), (self,), "Sig")
 
         def _backward():
-            self.grad += out.data(1 - out.data) * out.grad
+            self.grad += out.data * (1 - out.data) * out.grad
 
         out._backward = _backward
         return out
