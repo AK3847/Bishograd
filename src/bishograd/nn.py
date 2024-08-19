@@ -1,5 +1,5 @@
 import random
-from src.bishograd.engine import Hako
+from bishograd.engine import Hako
 
 
 class Neuron:
