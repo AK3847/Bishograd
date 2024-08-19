@@ -91,6 +91,15 @@ class Hako:
         out._backward = _backward
         return out
 
+    def linear(self):
+        out = Hako(self.data, (self,), "linear")
+
+        def _backward():
+            self.grad += out.grad
+
+        out._backward = _backward
+        return out
+
     def exp(self):
         x = self.data
         out = Hako(math.exp(x), (self,), "exp")
