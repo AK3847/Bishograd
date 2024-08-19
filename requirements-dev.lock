@@ -27,6 +27,7 @@ executing==2.0.1
     # via stack-data
 filelock==3.15.4
     # via virtualenv
+graphviz==0.20.3
 identify==2.6.0
     # via pre-commit
 ipykernel==6.29.5
@@ -92,3 +93,4 @@ virtualenv==20.26.3
     # via pre-commit
 wcwidth==0.2.13
     # via prompt-toolkit
+    

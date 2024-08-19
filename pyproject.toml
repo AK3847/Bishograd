@@ -18,6 +18,7 @@ managed = true
 dev-dependencies = [
     "pre-commit==2.9.2",
     "ipykernel>=6.29.5",
+    "graphviz>=0.20.3",
 ]
 
 [tool.hatch.metadata]
