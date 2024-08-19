@@ -39,9 +39,14 @@ class Layer:
 
 
 class MLP:
-    def __init__(self, nin, nouts) -> None:
+    def __init__(self, nin, nouts, activations=None) -> None:
         sz = [nin] + nouts
-        self.layers = [Layer(sz[i], sz[i + 1]) for i in range(len(nouts))]
+        if activations is None:
+            activations = ["linear"] * (len(nouts) - 1) + ["sigmoid"]
+        self.layers = [
+            Layer(sz[i], sz[i + 1], activation=activations[i])
+            for i in range(len(nouts))
+        ]
 
     def __call__(self, x):
         for layers in self.layers:
@@ -56,6 +61,7 @@ class MLP:
             param.grad = 0.0
 
     def train(self, epochs=50, lr_rate=0.001, x_input=None, y_output=None):
+        print(f"Training {self}")
         if x_input is None or y_output is None:
             raise ValueError("Invalid input for training data")
         for epoch in range(epochs + 1):
