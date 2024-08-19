@@ -19,6 +19,8 @@ dev-dependencies = [
     "pre-commit==2.9.2",
     "ipykernel>=6.29.5",
     "graphviz>=0.20.3",
+    "pytest>=8.3.2",
+    "pip>=24.2",
 ]
 
 [tool.hatch.metadata]
