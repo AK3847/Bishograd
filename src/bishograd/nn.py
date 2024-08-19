@@ -1,5 +1,5 @@
 import random
-from bishograd.engine import Hako
+from .engine import Hako
 
 
 class Neuron:
@@ -60,7 +60,30 @@ class MLP:
         for param in self.parameters():
             param.grad = 0.0
 
-    def train(self, epochs=50, lr_rate=0.001, x_input=None, y_output=None, stats=True):
+    def train(
+        self,
+        epochs: int = 50,
+        lr_rate: float = 0.001,
+        x_input=None,
+        y_output=None,
+        stats: bool = True,
+    ):
+        """
+        Trains the MLP model with given hyperparameters.
+
+        Args:
+            epochs (int) : The number of training epochs. Default is 50
+            lr_rate (float): The learning rate for gradient descent. Default is 0.001.
+            x_input (list): The input data for training. Default is None.
+            y_output (list): The target output data for training. Default is None.
+            stats (bool): Whether to print training statistics. Default is True.
+
+        Raises:
+            ValueError: If x_input or y_output is None.
+
+        Returns:
+            None
+        """
         if stats:
             print(f"{'-'*8}Training Model{'-'*8}")
             print(
