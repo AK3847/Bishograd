@@ -1,9 +1,9 @@
 [project]
 name = "bishograd"
 version = "0.1.0"
-description = "Add your description here"
+description = "Tiny & Light weight Machine Learning Library"
 authors = [
-    { name = "AK3847", email = "abdulkadir.co21d2@scet.ac.in" }
+    { name = "AK3847", email = "abdulkadir87633@gmail.com" }
 ]
 dependencies = []
 readme = "README.md"
