@@ -9,6 +9,8 @@ class Neuron:
         self.activation = activation
 
     def __call__(self, x):
+        if not isinstance(x, (list, tuple)):
+            x = [x]
         act = sum(wi * xi for wi, xi in zip(self.w, x)) + self.b
         if self.activation == "relu":
             out = act.relu()
@@ -49,6 +51,8 @@ class MLP:
         ]
 
     def __call__(self, x):
+        if not isinstance(x, (list, tuple)):
+            x = [x]
         for layers in self.layers:
             x = layers(x)
         return x
